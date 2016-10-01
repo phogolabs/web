@@ -1,10 +1,14 @@
-class ExampleController < ApplicationController
-  get '/' do
-    'Example!'
-  end
+module Phogo
+  module Controllers
+    class ExampleController < ApplicationController
+      get '/' do
+        'Example!'
+      end
 
-  get '/index' do
-    @current_user = "Frank Sinatra"
-    erb :example
+      get '/index' do
+        @current_user = "Frank Sinatra"
+        erb :example
+      end
+    end
   end
 end

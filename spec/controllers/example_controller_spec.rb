@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe 'ExampleController' do
-  let(:app) { ExampleController.new }
+  let(:app) { Phogo::Controllers::ExampleController.new }
 
   describe 'GET /' do
     it 'display the default message' do
