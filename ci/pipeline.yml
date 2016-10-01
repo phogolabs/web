@@ -1,0 +1,21 @@
+---
+groups:
+  - name: web
+    jobs:
+      - test
+
+resources:
+  - name: web
+    type: git
+    source:
+      uri: git@github.com:phogolabs/web.git
+      branch: master
+      private_key: {{github-private-key}}
+
+jobs:
+  - name: test
+    plan:
+      - get: web
+        trigger: true
+      - task: unit
+        file: web/ci/task/unit.yml
