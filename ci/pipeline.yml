@@ -2,7 +2,7 @@
 groups:
   - name: web
     jobs:
-      - test
+      - unit
 
 resources:
   - name: web
@@ -10,10 +10,10 @@ resources:
     source:
       uri: git@github.com:phogolabs/web.git
       branch: master
-      private_key: {{github-private-key}}
+      private_key: {{git-private-key}}
 
 jobs:
-  - name: test
+  - name: unit
     plan:
       - get: web
         trigger: true
