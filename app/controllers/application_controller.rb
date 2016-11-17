@@ -11,6 +11,8 @@ module Phogo
 
       # set folder for templates to ../views, but make the path absolute
       set :views, File.expand_path('../../views', __FILE__)
+      # set public folder
+      set :public_folder, File.expand_path('../../../public', __FILE__)
 
       configure :development do
         # Prevent CSRF attacks by raising an exception.
