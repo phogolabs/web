@@ -3,12 +3,19 @@ groups:
   - name: web
     jobs:
       - unit
+      - deploy-to-heroku
 
 resources:
   - name: web
     type: git
     source:
       uri: git@github.com:phogolabs/web.git
+      branch: master
+      private_key: {{git-private-key}}
+  - name: heroku
+    type: git
+    source:
+      uri: git@heroku.com:phogo.git
       branch: master
       private_key: {{git-private-key}}
 
@@ -19,3 +26,10 @@ jobs:
         trigger: true
       - task: unit
         file: web/ci/task/unit.yml
+  - name: deploy-to-heroku
+    plan:
+      - get: web
+        passed: [unit]
+        trigger: true
+      - put: heroku
+        params: {repository: web}
