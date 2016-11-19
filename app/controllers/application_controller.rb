@@ -13,7 +13,9 @@ module Phogo
       set :views, File.expand_path('../../views', __FILE__)
       # set public folder
       set :public_folder, File.expand_path('../../../public', __FILE__)
-      use Rack::Static, :urls => ["/static"], :root => "public"
+      set :static, true
+      use Rack::Static, :urls => ["/static"], :root => settings.public_folder
+      
 
       configure :development do
         # Prevent CSRF attacks by raising an exception.
