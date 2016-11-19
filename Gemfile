@@ -6,9 +6,9 @@ gem 'sinatra'
 gem 'sinatra-contrib'
 gem 'rake'
 gem 'rack_csrf'
+gem 'rspec'
 
 group :development, :test do
-  gem 'rspec'
   gem 'capybara'
   gem 'webmock'
 end

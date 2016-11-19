@@ -1,5 +1,9 @@
 require 'sinatra/base'
-require './app/phogo'
+require './app/controllers'
+
+use Rack::Static, urls: ["/static"], root: "public"
 
 # map the controllers to routes
-map('/') { run Phogo::Controllers::MainController }
+map('/') do
+  run Phogo::Controllers::MainController
+end

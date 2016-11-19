@@ -2,6 +2,7 @@ require "rack/csrf"
 require 'sinatra'
 require 'sinatra/reloader'
 require 'securerandom'
+require './app/helpers'
 
 module Phogo
   module Controllers
@@ -9,13 +10,10 @@ module Phogo
       # include ApplicationHelper in views
       helpers Phogo::Helpers
 
+      # set application root
+      set :root, File.expand_path('../', __FILE__)
       # set folder for templates to ../views, but make the path absolute
-      set :views, File.expand_path('../../views', __FILE__)
-      # set public folder
-      set :public_folder, File.expand_path('../../../public', __FILE__)
-      set :static, true
-      use Rack::Static, :urls => ["/static"], :root => settings.public_folder
-      
+      set :views, File.expand_path('../views', __FILE__)
 
       configure :development do
         # Prevent CSRF attacks by raising an exception.
@@ -38,4 +36,8 @@ module Phogo
 
     end
   end
+end
+
+Dir[File.join(File.dirname(__FILE__), 'controllers', '*.rb')].each do |filename|
+  require filename
 end
