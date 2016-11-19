@@ -1,6 +1,6 @@
 require 'rspec'
 require 'rack/test'
-require './app/phogo'
+require_relative '../app/controllers.rb'
 
 RSpec.configure do |conf|
   conf.include Rack::Test::Methods
