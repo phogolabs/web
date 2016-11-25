@@ -1,6 +1,7 @@
-require "rack/csrf"
 require 'sinatra'
+require "sinatra/base"
 require 'sinatra/reloader'
+require "rack/csrf"
 require 'securerandom'
 require './app/helpers'
 

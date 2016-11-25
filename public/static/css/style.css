@@ -4,21 +4,68 @@ html {
 }
 
 body {
-  margin-bottom: 300px;
+  margin-bottom: 60px;
 }
 
+.fa-2 {
+  font-size: 2em;
+}
+
+.fa-2:hover, .fa-2:focus {
+  text-decoration: none;
+}
+
+/* NAVBAR */
 .navbar-static-top {
   margin-bottom: 20px;
 }
 
-/* FOOTER CONTENT */
+.navbar-default {
+  border-color: #ffffff;
+  background-color:  #ffffff;
+}
+
+.navbar-default .navbar-nav>li>a {
+  color: #000;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.4;
+}
+
+.navbar-nav>li>a.active {
+  padding-top: 4px;
+  padding-bottom: 4px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: initial;
+  color: #A33149;
+}
+
+.navbar-default .navbar-nav>.active>a {
+  color: #fff;
+  background-color: #7ab55c;
+}
+
+
+/* FOOTER */
 .footer {
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 300px;
-  background-color: #f8f8f8;
-  border-top: 1px solid #e7e7e7;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #30373b;
+}
+
+.container .text-muted {
+  margin: 20px 0;
+}
+
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
 }
 
 /* MARKETING CONTENT */
