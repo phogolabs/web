@@ -183,6 +183,10 @@ NAVBAR
   border: none;
 }
 
+.navbar-brand {
+  padding: 0px;
+}
+
 .navbar ul.nav > li > a {
   text-transform: uppercase;
   letter-spacing: 0.1em;
