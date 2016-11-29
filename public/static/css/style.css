@@ -3,52 +3,22 @@ html {
   min-height: 100%;
 }
 
-body {
-  margin-bottom: 60px;
-}
-
 a {
-  color: #2d7b6b;
+  color: #109CDB;
+  text-decoration: none;
 }
 
 a:hover {
   text-transform: none;
   text-decoration: none;
-  color: #3dc9b3;
-}
-
-.container .text-muted {
-  margin: 20px 0;
+  color: #06B8EC;
 }
 
 .fa-2 {
   font-size: 2em;
 }
 
-.fa-2:hover, .fa-2:focus {
-  text-decoration: none;
-}
-
-/* MARKETING CONTENT */
-.marketing .col-lg-4 {
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-.marketing h2 {
-  font-weight: normal;
-}
-
-.marketing .col-lg-4 p {
-  margin-right: 10px;
-  margin-left: 10px;
-}
-
-.featurette-divider {
-  margin: 80px 0; /* Space out the Bootstrap <hr> more */
-}
-
-.last-divider {
+hr {
   margin-top: 0px;
 }
 
@@ -84,4 +54,202 @@ a:hover {
     margin-top: 120px;
     margin-bottom: 0px;
   }
+}
+
+/* CONTACT FORM */
+fieldset {
+  border: medium none !important;
+  margin: 0 0 10px;
+  min-width: 100%;
+  padding: 0;
+  width: 100%;
+}
+
+input,
+textarea {
+  width: 100%;
+  margin: 0 0 5px;
+  padding: 10px;
+  background-color: rgb(250, 250, 250);
+  border: 1px solid #dbdbe0;
+}
+
+input:hover,
+textarea:hover {
+  -webkit-transition: border-color 0.3s ease-in-out;
+  -moz-transition: border-color 0.3s ease-in-out;
+  transition: border-color 0.3s ease-in-out;
+  border: 1px solid #06B8EC;
+}
+
+input:focus,
+textarea:focus {
+  outline: 0;
+  border: 1px solid #1798D8;
+}
+
+textarea {
+  height: 150px;
+  max-width: 100%;
+  resize: vertical;
+}
+
+#contact button {
+  cursor: pointer;
+  width: 100%;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 12px;
+  font-weight: bold;
+  border: none;
+  background-color:  #109CDB;
+  color: #FFF;
+  margin: 0 0 5px;
+  padding: 10px;
+  font-size: 15px;
+}
+
+#contact button:hover {
+  background-color: #06B8EC;
+  -webkit-transition: background 0.3s ease-in-out;
+  -moz-transition: background 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out;
+}
+
+#contact button:active {
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+#contact .fa {
+  padding-right: 5px;
+}
+
+#contact address {
+  font-size: 16px;
+}
+
+::-webkit-input-placeholder {
+  color: #888;
+}
+
+:-moz-placeholder {
+  color: #888;
+}
+
+::-moz-placeholder {
+  color: #888;
+}
+
+:-ms-input-placeholder {
+  color: #888;
+}
+
+
+/* Carousel */
+.carousel {
+  height: 500px;
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+  z-index: 10;
+}
+
+/* Declare heights because of positioning of img element */
+.carousel .item {
+  height: 500px;
+}
+
+.carousel .item > img {
+  height: 500px;
+  display: block;
+  line-height: 1;
+}
+
+.carousel-control.left,
+.carousel-control.right {
+  background-image: none;
+}
+
+/*
+=====================
+NAVBAR
+=====================
+*/
+.navbar-default {
+  background-color: #ffffff;
+}
+
+.navbar {
+  border: none;
+}
+
+.navbar ul.nav > li > a {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 12px;
+  font-weight: bold;
+  border-top: solid 3px transparent;
+}
+
+.navbar ul.nav > li > a.active {
+  color: #000;
+}
+
+.navbar ul.nav > li > a:hover {
+  border-top: solid 3px #06B8EC;
+}
+
+@media (max-width: 767px) {
+  .navbar ul.nav > li > a:hover {
+    border-top: solid 3px transparent;
+  }
+}
+
+.navbar-default .navbar-nav>.active>a:hover,
+.navbar ul.nav > li.active > a,
+.navbar ul.nav > li.open > a {
+  text-decoration: none !important;
+  border-top: solid 3px #1798D8;
+  background-color:  #06B8EC;
+  color: #fff;
+}
+
+@media (max-width: 767px) {
+  .navbar ul.nav > li.active > a,
+  .navbar ul.nav > li.open > a {
+    border-top: solid 3px transparent;
+  }
+}
+
+
+/*
+=====================
+FOOTER
+=====================
+*/
+
+body {
+  margin-bottom: 60px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 70px;
+  border-bottom: 5px solid #1798D8;
+}
+
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.footer > .container > .text-muted {
+  margin: 20px 0;
+}
+
+#back-to-top {
+  background-color: #109CDB;
+  padding: 5px;
 }
