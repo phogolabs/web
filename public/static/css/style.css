@@ -123,6 +123,7 @@ textarea {
 
 #contact address {
   font-size: 18px;
+  padding: 0 0 20px 0;
 }
 
 ::-webkit-input-placeholder {
@@ -146,28 +147,28 @@ textarea {
 CAROUSEL
 =====================
 */
-.carousel {
-  height: 580px;
-}
 
 .carousel-caption {
-  text-shadow: none;
+  position: inherit;
   color: #000;
+  text-shadow: none;
   font-size: 21px;
-  font-weight: 300;
-  line-height: 1;
-  z-index: 10;
-  padding-bottom: 0px;
+  font-weight: 350;
+  max-width: 80%;
 }
 
-.carousel .item {
-  height: 580px;
+@media (max-width: 768px) {
+  .carousel-caption {
+    display: none;
+  }
 }
 
 .carousel .item > img {
-  height: 500px;
   display: block;
-  line-height: 1;
+  width: 100%;
+  height: auto;
+  max-width: 781px;
+  max-height: 500px
 }
 
 .carousel-indicators li {
@@ -191,19 +192,6 @@ CAROUSEL
 	text-shadow: none;
 }
 
-.carousel-control.left span,
-.carousel-control.right span {
-	background-color:  #06B8EC;
-}
-
-.carousel-control.left span {
- border-left: solid 3px #1798D8;
-}
-
-.carousel-control.right span {
- border-right: solid 3px #1798D8;
-}
-
 .carousel-control .glyphicon-chevron-right, 
 .carousel-control .icon-next,
 .carousel-control .glyphicon-chevron-left, 
@@ -213,6 +201,7 @@ CAROUSEL
   margin-top: -10px;
   font-size: 37px;
   margin: 0px;
+  color:  #06B8EC;
   opacity: .3;
 }
 
@@ -236,7 +225,8 @@ NAVBAR
 }
 
 .navbar-brand {
-  padding: 0px;
+  padding-top: 0px;
+  height: 55px;
 }
 
 .navbar ul.nav > li > a {
@@ -296,7 +286,6 @@ body {
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 70px;
   border-bottom: 5px solid #1798D8;
 }
 
