@@ -110,10 +110,7 @@ textarea {
 }
 
 #contact button:hover {
-  background-color: #06B8EC;
-  -webkit-transition: background 0.3s ease-in-out;
-  -moz-transition: background 0.3s ease-in-out;
-  transition: background-color 0.3s ease-in-out;
+  opacity: .7;
 }
 
 #contact button:active {
@@ -125,7 +122,7 @@ textarea {
 }
 
 #contact address {
-  font-size: 16px;
+  font-size: 18px;
 }
 
 ::-webkit-input-placeholder {
@@ -144,19 +141,27 @@ textarea {
   color: #888;
 }
 
-
-/* Carousel */
+/*
+=====================
+CAROUSEL
+=====================
+*/
 .carousel {
-  height: 500px;
-}
-/* Since positioning the image, we need to help out the caption */
-.carousel-caption {
-  z-index: 10;
+  height: 580px;
 }
 
-/* Declare heights because of positioning of img element */
+.carousel-caption {
+  text-shadow: none;
+  color: #000;
+  font-size: 21px;
+  font-weight: 300;
+  line-height: 1;
+  z-index: 10;
+  padding-bottom: 0px;
+}
+
 .carousel .item {
-  height: 500px;
+  height: 580px;
 }
 
 .carousel .item > img {
@@ -165,10 +170,57 @@ textarea {
   line-height: 1;
 }
 
+.carousel-indicators li {
+  background-color: #fff;
+  border-color: #1798D8;
+}
+
+.carousel-indicators .active {
+  background-color: #1798D8;
+}
+
+.carousel-control {
+    width: 0;
+}
+
 .carousel-control.left,
 .carousel-control.right {
-  background-image: none;
+	opacity: 1;
+	background-image: none;
+	background-repeat: no-repeat;
+	text-shadow: none;
 }
+
+.carousel-control.left span,
+.carousel-control.right span {
+	background-color:  #06B8EC;
+}
+
+.carousel-control.left span {
+ border-left: solid 3px #1798D8;
+}
+
+.carousel-control.right span {
+ border-right: solid 3px #1798D8;
+}
+
+.carousel-control .glyphicon-chevron-right, 
+.carousel-control .icon-next,
+.carousel-control .glyphicon-chevron-left, 
+.carousel-control .icon-prev {
+  width: 40px;
+  height: 40px;
+  margin-top: -10px;
+  font-size: 37px;
+  margin: 0px;
+  opacity: .3;
+}
+
+.carousel-control.left span:hover,
+.carousel-control.right span:hover {
+	opacity: .7;
+}
+
 
 /*
 =====================
@@ -216,6 +268,10 @@ NAVBAR
   border-top: solid 3px #1798D8;
   background-color:  #06B8EC;
   color: #fff;
+}
+
+.navbar ul.nav > li.active > a:hover {
+  opacity: 0.7;
 }
 
 @media (max-width: 767px) {
