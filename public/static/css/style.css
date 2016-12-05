@@ -22,16 +22,27 @@ hr {
   margin-top: 0px;
 }
 
+.text-md {
+  font-size: 16px;
+}
+
 .heading {
   font-weight: 300;
   line-height: 1;
   letter-spacing: -1px;
 }
 
-.heading-medium {
+.heading-md {
   font-weight: 150;
   line-height: 1;
   letter-spacing: -1px;
+}
+
+.heading-sm {
+  text-transform: uppercase;
+ letter-spacing: 0.1em;
+ font-size: 12px;
+ font-weight: bold;
 }
 
 @media (min-width: 768px) {
@@ -46,7 +57,7 @@ hr {
     margin-bottom: 60px;
   }
 
-  .heading-medium {
+  .heading-md {
     margin-top: 60px;
   }
 
