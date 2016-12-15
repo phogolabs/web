@@ -99,6 +99,11 @@ textarea:focus {
   border: 1px solid #1798D8;
 }
 
+.invalid textarea:required:invalid,
+.invalid input:required:invalid {
+  border: 1px solid  #BE4C54;
+}
+
 textarea {
   height: 150px;
   max-width: 100%;
@@ -282,7 +287,6 @@ NAVBAR
     border-top: solid 3px transparent;
   }
 }
-
 
 /*
 =====================

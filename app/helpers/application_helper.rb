@@ -9,6 +9,10 @@ module Phogo
       request.path_info == path
     end
 
+    def abs_path(path)
+      "#{request.base_url}#{path}"
+    end
+
     def nav_link(name, path)
       options = 'class="active"' if current_page?(path)
       "<a href=\"#{path}\" #{options}>#{name}</a>"

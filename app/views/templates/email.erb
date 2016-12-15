@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Phogo Labs | Turns awesome ideas into brilliant products</title>
+    <link rel="stylesheet" type="text/css" href="<%= abs_path('/static/css/email.css') %>" />
+  </head>
+  <body>
+    <table class="head-wrap">
+      <tr>
+        <td></td>
+        <td class="header container">
+          <div class="content">
+            <table>
+              <tr>
+                <td><img src="<%= abs_path('/static/img/logo.png') %>" /></td>
+                <td align="right">
+                  <h6 class="collapse">Contact Request</h6>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </td>
+        <td></td>
+      </tr>
+    </table>
+    <table class="body-wrap">
+      <tr>
+        <td></td>
+        <td class="container">
+          <div class="content">
+            <table>
+              <tr>
+                <td>
+                  <h3>Hi, Phogo Labs</h3>
+                  <p class="lead">You have been contacted.</p>
+                  <p><%= @contact.message %></p>
+                  <p class="callout"><%= @contact.subject %></p>
+                  <table class="social" width="100%">
+                    <tr>
+                      <td>
+                        <table align="left" class="column">
+                          <tr>
+                            <td>
+                              <h5 class="">Contact Info:</h5>
+                              <p>
+                                Name: <strong><%= @contact.name %></strong><br/> 
+                                Phone: <strong><%= @contact.phone %></strong><br/> 
+                                Email: <strong><a href="emailto:<%= @contact.email %>"><%= @contact.email %></a></strong>
+                              </p>
+                            </td>
+                          </tr>
+                        </table>
+                        <span class="clear"></span>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </td>
+        <td></td>
+      </tr>
+    </table>
+  </body>
+</html>

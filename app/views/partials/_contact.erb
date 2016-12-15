@@ -8,21 +8,21 @@
         </h2>
         <div class="row">
           <div class="col-md-6">
-            <form id="contact-form" action="" method="post">
+            <form id="contact-form" action="/contact" method="post">
               <fieldset>
-                <input placeholder="Your name" type="text" tabindex="1" required>
+                <input placeholder="Your name" type="text" name="name" tabindex="1" required>
               </fieldset>
               <fieldset>
-                <input placeholder="Your email address" type="email" tabindex="2" required>
+                <input placeholder="Your email address" type="email" name="email" tabindex="2" required>
               </fieldset>
               <fieldset>
-                <input placeholder="Your phone number (optional)" type="tel" tabindex="3">
+                <input placeholder="Your phone number (optional)" type="tel" name="phone" tabindex="3">
               </fieldset>
               <fieldset>
-                <input placeholder="What is your company or project name? (optional)" type="text" tabindex="4">
+                <input placeholder="What is your company or project name? (optional)" name="subject" type="text" tabindex="4">
               </fieldset>
               <fieldset>
-                <textarea placeholder="What can we do for you?" tabindex="5" required></textarea>
+                <textarea placeholder="What can we do for you?" tabindex="5" name="message" required></textarea>
               </fieldset>
               <fieldset>
                 <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Send message</button>

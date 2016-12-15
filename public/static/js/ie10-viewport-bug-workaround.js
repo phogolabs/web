@@ -21,3 +21,7 @@
   }
 
 })();
+
+function hasHtml5Validation () {
+ return typeof document.createElement('input').checkValidity === 'function';
+}
