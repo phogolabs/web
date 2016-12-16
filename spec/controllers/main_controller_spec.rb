@@ -86,7 +86,7 @@ describe 'MainController' do
           :message => 'Hello World'
 
         expect(last_response.status).to eq(500)
-        expect(last_response.body).to eq('oh no')
+        expect(last_response.body).to include('oh no')
       end
     end
 

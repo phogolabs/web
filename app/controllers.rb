@@ -27,6 +27,8 @@ module Phogo
 
       # configuration in production
       configure :production do
+        # show exceptions after handlers
+        set :show_exceptions, :after_handler
         # Prevent CSRF attacks by raising an exception.
         use Rack::Session::Cookie, :secret => ENV.fetch('COOKIE_SECRET')
         # For APIs, you may want to use :null_session instead.
