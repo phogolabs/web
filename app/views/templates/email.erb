@@ -46,7 +46,9 @@
                               <h5 class="">Contact Info:</h5>
                               <p>
                                 Name: <strong><%= @contact.name %></strong><br/> 
-                                Phone: <strong><%= @contact.phone %></strong><br/> 
+                                <% if @contact.phone and not @contact.phone.empty? %>
+                                  Phone: <strong><%= @contact.phone %></strong><br/>
+                                <% end %>
                                 Email: <strong><a href="emailto:<%= @contact.email %>"><%= @contact.email %></a></strong>
                               </p>
                             </td>
