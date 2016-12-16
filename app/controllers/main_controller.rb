@@ -29,8 +29,9 @@ module Phogo
         content = SendGrid::Content.new(type: 'text/html', value: content_body)
         mail = SendGrid::Mail.new(from, @contact.subject, to, content)
         sendgrid = SendGrid::API.new(api_key: ENV.fetch('SENDGRID_API_KEY'))
-        sendgrid.client.mail._('send').post(request_body: mail.to_json)
+        response = sendgrid.client.mail._('send').post(request_body: mail.to_json)
 
+        halt 500, response.body if response.status_code != '202'
         redirect '/thankyou'
       end
     end
