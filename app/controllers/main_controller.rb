@@ -19,9 +19,10 @@ module Phogo
         param :name, String, required: true
         param :email, String, required: true, format: /\A([\w+\-]\.?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
         param :message, String, required: true
-        param :subject, String, default: 'Contact request'
+        param :subject, String
 
         @contact = OpenStruct.new(params)
+        @contact.subject = "Contact Request by #{params[:name]}" if @contact.subject.nil? or @contact.subject.empty?
         content_body = erb :'templates/email'
 
         from = SendGrid::Email.new(name: @contact.name, email: @contact.email)

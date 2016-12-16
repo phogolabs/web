@@ -45,6 +45,28 @@ describe 'MainController' do
       expect(last_response.status).to eq(302)
     end
 
+    context 'when the subject is not provided' do
+      it 'sends an email' do
+        expect(SendGrid::Email).to receive(:new).with(hash_including(:name => 'John Dow', :email => 'from@example.com')).and_return(from_email)
+        expect(SendGrid::Email).to receive(:new).with(hash_including(:email => ENV['PHOGO_EMAIL_RECIPIENT'])).and_return(to_email)
+        expect(SendGrid::Content).to receive(:new).with(hash_including(:type => 'text/html')).and_return(content)
+        expect(SendGrid::Mail).to receive(:new).with(from_email, 'Contact Request by John Dow', to_email, content).and_return(mail)
+        expect(mail).to receive(:to_json).and_return('mail_json')
+
+        expect(SendGrid::API).to receive(:new).with(hash_including(:api_key => ENV['SENDGRID_API_KEY'])).and_return(sendgrid)
+        expect(sendgrid).to receive_message_chain(:client, :mail, :_).with('send').and_return(client_sender)
+        expect(client_sender).to receive(:post).with(hash_including(:request_body => 'mail_json')).and_return(instance_double('response', :status_code => '202', :body => ''))
+
+        post '/contact',
+          :email =>'from@example.com',
+          :name => 'John Dow',
+          :message => 'Hello World',
+          :subject => ''
+
+        expect(last_response.status).to eq(302)
+      end
+    end
+
     context 'when the email send fails' do
       it 'sends an email' do
         expect(SendGrid::Email).to receive(:new).with(hash_including(:name => 'John Dow', :email => 'from@example.com')).and_return(from_email)
