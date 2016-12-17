@@ -8,23 +8,24 @@
         </h2>
         <div class="row">
           <div class="col-md-6">
-            <form id="contact-form" action="/contact" method="post">
+            <form id="contact-form" action="/contact" method="post" data-toggle="validator" role="form">
               <%= csrf_tag %>
-              <fieldset>
-                <input placeholder="Your name" type="text" name="name" tabindex="1" required>
-              </fieldset>
-              <fieldset>
-                <input placeholder="Your email address" type="email" name="email" tabindex="2" required>
-              </fieldset>
-              <fieldset>
+              <div class="form-group">
+                <input placeholder="Your name" type="text" name="name" tabindex="1" required="required" data-error="Your name is required">
+                <div class="help-block with-errors"></div>
+              </div>
+              <div class="form-group">
+                <input placeholder="Your email address" type="email" name="email" tabindex="2" required="required" data-error="Your email address is required">
+                <div class="help-block with-errors"></div>
+              </div>
+              <div class="form-group">
                 <input placeholder="What is your company or project name? (optional)" name="subject" type="text" tabindex="3">
-              </fieldset>
-              <fieldset>
-                <textarea placeholder="What can we do for you?" tabindex="3" name="message" required></textarea>
-              </fieldset>
-              <fieldset>
-                <button name="submit" type="submit" id="contact-submit" data-submit="Sending a message">Send message</button>
-              </fieldset>
+              </div>
+              <div class="form-group">
+                <textarea placeholder="What can we do for you?" tabindex="3" name="message" required="required" data-error="Please, leave us a message"></textarea>
+                <div class="help-block with-errors"></div>
+              </div>
+              <button name="submit" type="submit" id="contact-submit" data-submit="Sending a message">Send message</button>
             </form>
           </div>
           <div class="col-md-6">

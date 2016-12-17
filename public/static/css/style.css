@@ -68,18 +68,23 @@ hr {
 }
 
 /* CONTACT FORM */
+.form-group,
 fieldset {
   border: medium none !important;
-  margin: 0 0 10px;
+  margin: 0 0 12px;
   min-width: 100%;
   padding: 0;
   width: 100%;
 }
 
+.help-block {
+  font-size: 12px;
+}
+
 input,
 textarea {
   width: 100%;
-  margin: 0 0 5px;
+  margin: 0px;
   padding: 10px;
   background-color: rgb(250, 250, 250);
   border: 1px solid #dbdbe0;
@@ -97,11 +102,6 @@ input:focus,
 textarea:focus {
   outline: 0;
   border: 1px solid #1798D8;
-}
-
-.invalid textarea:required:invalid,
-.invalid input:required:invalid {
-  border: 1px solid  #BE4C54;
 }
 
 textarea {
