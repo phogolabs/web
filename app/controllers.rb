@@ -4,6 +4,7 @@ require 'sinatra/reloader'
 require "rack/csrf"
 require 'securerandom'
 require './app/helpers'
+require 'rack-google-analytics'
 
 module Phogo
   module Controllers
@@ -31,6 +32,8 @@ module Phogo
         set :show_exceptions, :after_handler
         # Prevent CSRF attacks by raising an exception.
         use Rack::Session::Cookie, :secret => ENV.fetch('COOKIE_SECRET')
+        # Enable Google Analytics
+        use Rack::GoogleAnalytics, :tracker => ENV.fetch('GOOGLE_TRACKING_ID')
         # For APIs, you may want to use :null_session instead.
         use Rack::Csrf, :raise => true
         # enable logging when running tests
