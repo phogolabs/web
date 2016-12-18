@@ -42,7 +42,7 @@ describe 'MainController' do
         :subject => 'Project Request',
         :message => 'Hello World'
 
-      expect(last_response.status).to eq(302)
+      expect(last_response.status).to eq(200)
     end
 
     context 'when the subject is not provided' do
@@ -63,7 +63,7 @@ describe 'MainController' do
           :message => 'Hello World',
           :subject => ''
 
-        expect(last_response.status).to eq(302)
+        expect(last_response.status).to eq(200)
       end
     end
 

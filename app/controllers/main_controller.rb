@@ -7,10 +7,6 @@ module Phogo
     class MainController < ApplicationController
       helpers Sinatra::Param
 
-      error 500 do
-        erb :error, :layout => :'layout/_main', :locals => { :message => env['sinatra.error'].message }
-      end
-
       get '/' do
         erb :index, :layout => :'layout/_main'
       end
@@ -37,7 +33,6 @@ module Phogo
         response = sendgrid.client.mail._('send').post(request_body: mail.to_json)
 
         raise StandardError, response.body if response.status_code != '202'
-        redirect '/thankyou'
       end
     end
   end
