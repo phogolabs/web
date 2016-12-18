@@ -47,6 +47,20 @@ hr {
   font-weight: bold;
 }
 
+.features .media {
+  margin-top: 20px;
+  margin-bottom: 10px
+}
+
+.media .media-left {
+  vertical-align: middle;
+}
+
+.media .media-heading {
+  margin-top: 7px;
+  margin-bottom: 5px;
+}
+
 @media (min-width: 768px) {
   .heading {
     font-size: 50px;
