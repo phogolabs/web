@@ -52,6 +52,11 @@ hr {
   margin-bottom: 10px
 }
 
+.section {
+  margin-top: 20px;
+  margin-bottom: 20px
+}
+
 .media .media-left {
   vertical-align: middle;
 }
@@ -74,7 +79,7 @@ hr {
   }
 
   .heading-md {
-    margin-top: 60px;
+    margin-top: 20px;
   }
 
   .feature {
