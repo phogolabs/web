@@ -277,9 +277,6 @@ NAVBAR
   font-size: 12px;
   font-weight: bold;
   border-top: solid 3px transparent;
-}
-
-.navbar ul.nav > li > a.active {
   color: #000;
 }
 
