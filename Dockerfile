@@ -7,7 +7,9 @@ RUN mkdir -p /var/app/vendor
 COPY . /var/app/
 
 WORKDIR /var/app
-RUN bundle install --local -j $(nproc)
+
+RUN gem install bundler
+RUN bundle install
 
 EXPOSE 9292
 
