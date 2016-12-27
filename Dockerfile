@@ -12,5 +12,3 @@ RUN gem install bundler
 RUN bundle install
 
 EXPOSE 9292
-
-CMD [ "bundle", "exec", "rackup"]
