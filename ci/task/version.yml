@@ -6,10 +6,10 @@ image_resource:
   source: {repository: phogo/ruby, tag: latest}
 
 inputs:
-- name: source
+- name: git-repository
 
 outputs:
 - name: version
 
 run:
-  path: web/ci/script/version.sh
+  path: repository/ci/script/version.sh
