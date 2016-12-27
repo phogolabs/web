@@ -5,8 +5,6 @@ groups:
       - unit
       - deploy-to-heroku
       - build-docker-image-rc
-  - name: release
-    jobs:
       - create-final-release
 
 resources:
