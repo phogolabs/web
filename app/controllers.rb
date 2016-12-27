@@ -12,6 +12,8 @@ module Phogo
       # include ApplicationHelper in views
       helpers Phogo::Helpers
 
+      # bind to all available interfaces
+      set :bind, '0.0.0.0'
       # set application root
       set :root, File.expand_path('../', __FILE__)
       # set folder for templates to ../views, but make the path absolute
