@@ -59,7 +59,7 @@ jobs:
       - put: docker-image
         params:
          build: web
-         tag_prefix: 'rc'
+         tag_prefix: 'rc-'
          tag: version/hash
         get_params: {skip_download: true, save: true}
 
