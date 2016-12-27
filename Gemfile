@@ -1,12 +1,12 @@
 source 'http://rubygems.org'
 
-ruby '2.3.1'
+ruby '2.3.3'
 
 gem 'sinatra'
 gem 'sinatra-contrib'
 gem 'sinatra-param'
 gem 'rake'
-gem 'rack','<2.0'
+gem 'rack'
 gem 'rack_csrf'
 gem 'rspec'
 gem 'sendgrid-ruby'
