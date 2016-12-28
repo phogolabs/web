@@ -83,7 +83,7 @@ jobs:
       - task: version
         file: web-rc/ci/task/version.yml
         input_mapping: {repository: web-rc}
-        params: {product_name: phogo-web}
+        params: {PRODUCT_NAME: phogo-web}
       - put: docker-image
         params:
          build: web-rc
