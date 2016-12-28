@@ -23,6 +23,12 @@ resources:
       tag_filter: v*
       private_key: {{git-private-key}}
 
+  - name: concourse-tasks
+    type: git
+    source:
+      uri: https://github.com/phogolabs/concourse-tasks.git
+      branch: master
+
   - name: github-release
     type: github-release
     source:
@@ -55,11 +61,12 @@ jobs:
 
   - name: build-docker-image-rc
     plan:
+      - get: concourse-tasks
       - get: web
         passed: [unit]
         trigger: true
       - task: version
-        file: web/ci/task/version.yml
+        file: concourse-tasks/git/version.yml
         input_mapping: {repository: web}
       - put: docker-image
         params:
@@ -78,10 +85,11 @@ jobs:
 
   - name: create-final-release
     plan:
+      - get: concourse-tasks
       - get: web-rc
         trigger: true
       - task: version
-        file: web-rc/ci/task/version.yml
+        file: concourse-tasks/git/version.yml
         input_mapping: {repository: web-rc}
         params: {PRODUCT_NAME: phogo-web}
       - put: docker-image
