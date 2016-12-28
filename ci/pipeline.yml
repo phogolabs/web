@@ -101,6 +101,5 @@ jobs:
       - put: github-release
         params:
           name: version/name
-          commitish: version/hash
           tag: version/number
           tag_prefix: 'v'
