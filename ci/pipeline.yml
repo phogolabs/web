@@ -23,6 +23,13 @@ resources:
       tag_filter: v*
       private_key: {{git-private-key}}
 
+  - name: github-release
+    type: github-release
+    source:
+      user: phogolabs
+      repository: web
+      access_token: {{github-access-token}}
+
   - name: docker-image
     type: docker-image
     source:
@@ -76,9 +83,16 @@ jobs:
       - task: version
         file: web-rc/ci/task/version.yml
         input_mapping: {repository: web-rc}
+        params: {product_name: phogo-web}
       - put: docker-image
         params:
          build: web-rc
          tag_prefix: 'v'
          tag: version/number
          tag_as_latest: true
+      - put: github-release
+        params:
+          name: version/name
+          commitish: version/hash
+          tag: version/number
+          tag_prefix: 'v'
