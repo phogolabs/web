@@ -1,4 +1,4 @@
-FROM phogo/ci
+FROM phogo/ruby
 MAINTAINER "Phogo Labs <engineering@phogolabs.com>"
 
 ENV LC_ALL C.UTF-8
