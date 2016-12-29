@@ -1,0 +1,13 @@
+https: false
+force_https: false
+https_common_name: "{{ fqdn }}"
+untrusted_ca: false
+http_host: "{{ fqdn }}"
+http_path: "/"
+
+response_status: HTTP/1.1 200 OK
+response_server: nginx
+
+https_checks:
+  - "'CN={{ https_common_name }}' in http_response.stderr"
+  - "'server certificate verification OK' in http_response.stderr"

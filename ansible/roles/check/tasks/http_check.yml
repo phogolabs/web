@@ -1,0 +1,27 @@
+- name: http response
+  register: http_response
+  shell: >
+    curl --connect-timeout 3 {{ '-k' if untrusted_ca else '' }} -sv {{ 'https' if https else 'http' }}://{{ http_host }}{{ http_path }}
+
+- name: debug http response
+  when: debug | default(false)
+  debug:
+    var: http_response
+
+- name: check http response
+  assert:
+    that:
+      - "'Host: {{ fqdn }}' in http_response.stderr"
+      - "response_status in http_response.stderr"
+      - "response_server in http_response.stderr"
+
+- name: check https
+  when: https
+  assert:
+    that: "{{ https_checks }}"
+
+- name: check HSTS
+  when: https and force_https
+  assert:
+    that:
+      - "'Strict-Transport-Security' in http_response.stderr"

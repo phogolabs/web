@@ -1,0 +1,8 @@
+# applications: an array of all web applications that should be deploy
+# - name: application name used for container name
+#   command: command that runs inside the container
+#   env: any environment variable that are needed
+#   docker_image: docker image that needs to be pulled
+#   network:
+#     fqdn: host name
+#     port: container exposed port

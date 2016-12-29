@@ -1,0 +1,26 @@
+- name: configure HTTPS certificate for web applications
+  notify: restart nginx
+  copy:
+    content: "{{ item.https.cert }}"
+    dest: "{{ nginx_config_dir }}/ssl/{{ item.network.fqdn }}.crt"
+    mode: 0644
+  with_items: "{{ applications }}"
+  when: item.https is defined
+
+- name: configure HTTPS key for Web applications
+  notify: restart nginx
+  copy:
+    content: "{{ item.https.key }}"
+    dest: "{{ nginx_config_dir }}/ssl/{{ item.network.fqdn }}.key"
+    mode: 0644
+  with_items: "{{ applications }}"
+  when: item.https is defined
+
+- name: configure HTTPS chain for Web applications
+  notify: restart nginx
+  copy:
+    content: "{{ item.https.chain }}"
+    dest: "{{ nginx_config_dir }}/ssl/{{ item.network.fqdn }}.fullchain.pem"
+    mode: 0644
+  with_items: "{{ applications }}"
+  when: item.https and item.https.chain is defined

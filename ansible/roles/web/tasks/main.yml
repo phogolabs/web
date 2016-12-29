@@ -1,0 +1,33 @@
+- name: ensure web applications are running
+  docker_container:
+    name: "{{ item.name }}"
+    image: "{{ item.docker_image }}"
+    command: "{{ item.command }}"
+    state: started
+    recreate: yes
+    restart_policy: unless-stopped
+    network_mode: "{{ nginx_net }}"
+    env: "{{ item.env | default({}) }}"
+    tty: yes
+  with_items: "{{ applications }}"
+
+- name: configure nginx HTTP proxy for web applications
+  template:
+    src: nginx.web.j2
+    dest: "{{ nginx_config_dir }}/sites/{{ item.network.fqdn }}.site"
+  with_items: "{{ applications }}"
+  when: item.https is not defined
+
+- name: configure nginx HTTPS proxy for web applications
+  template:
+    src: nginx.web.ssl.j2
+    dest: "{{ nginx_config_dir }}/sites/{{ item.network.fqdn }}.site"
+  with_items: "{{ applications }}"
+  when: item.https is defined
+
+- include: http_ssl.yml
+
+- name: reload nginx
+  shell: >
+    docker exec nginx.{{ nginx_net }} nginx -t &&
+    docker kill -s HUP nginx.{{ nginx_net }}

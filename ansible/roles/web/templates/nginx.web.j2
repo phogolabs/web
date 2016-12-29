@@ -1,0 +1,23 @@
+#/* vim: set ft=cfg : */
+
+server {
+  listen 80;
+  server_name {{ item.network.fqdn }};
+
+  # The page can only be displayed in a frame on the same origin as the page itself
+  add_header X-Frame-Options SAMEORIGIN;
+
+  location / {
+    proxy_pass http://{{ item.name }}:{{ item.network.port }};
+    proxy_buffering off;
+    proxy_cache off;
+    proxy_read_timeout 5m;
+    proxy_send_timeout 5m;
+    proxy_set_header  Upgrade $http_upgrade;
+    proxy_set_header  Connection "upgrade";
+  }
+
+  include /etc/nginx/conf.d/disable_favicon_logging.server;
+  include /etc/nginx/conf.d/disable_robots_logging.server;
+  include /etc/nginx/conf.d/disable_hidden.server;
+}

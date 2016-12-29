@@ -1,0 +1,23 @@
+https_common_name: www.phogolabs.com
+https: true
+https_checks: ["'CN={{ https_common_name }}' in http_response.stderr"]
+https_common_name: "CloudFlare Origin Certificate"
+untrusted_ca: true
+
+applications:
+- name: phogo-web
+  command: 'bundle exec rackup --host 0.0.0.0'
+  env:
+    COOKIE_SECRET: "{{ lookup('env', 'COOKIE_SECRET') }}"
+    GOOGLE_TRACKING_ID: UA-89116778-1
+    LANG: en_US.UTF-8
+    PHOGO_EMAIL_RECIPIENT: contact@phogolabs.com
+    RACK_ENV: production
+    SENDGRID_API_KEY: "{{ lookup('env', 'SENDGRID_API_KEY') }}"
+  docker_image: 'phogo/web:latest'
+  network:
+    fqdn: 'www.phogolabs.com'
+    port: 9292
+  https:
+    cert: "{{ lookup('env', 'HTTPS_CERT') }}"
+    key:  "{{ lookup('env', 'HTTPS_KEY') }}"

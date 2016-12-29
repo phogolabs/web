@@ -1,0 +1,10 @@
+- name: www.phogolabs.com
+  hosts: www.phogolabs.com
+  gather_facts: true
+
+  roles:
+    - role: web
+      tags: [web]
+
+    - role: check
+      tags: [check]
