@@ -14,7 +14,7 @@ applications:
     PHOGO_EMAIL_RECIPIENT: contact@phogolabs.com
     RACK_ENV: production
     SENDGRID_API_KEY: "{{ lookup('env', 'SENDGRID_API_KEY') }}"
-  docker_image: 'phogo/web:latest'
+  docker_image: 'phogo/web:rc-7ba4522'
   network:
     fqdn: 'www.phogolabs.com'
     port: 9292
