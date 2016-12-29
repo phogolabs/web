@@ -1,4 +1,3 @@
-https_common_name: www.phogolabs.com
 https: true
 https_checks: ["'CN={{ https_common_name }}' in http_response.stderr"]
 https_common_name: "CloudFlare Origin Certificate"
