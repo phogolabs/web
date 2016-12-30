@@ -11,6 +11,7 @@ gem 'rack_csrf'
 gem 'rspec'
 gem 'sendgrid-ruby'
 gem 'rack-google-analytics'
+gem 'thin'
 
 group :development, :test do
   gem 'capybara'
