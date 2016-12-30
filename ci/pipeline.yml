@@ -85,6 +85,7 @@ jobs:
         params: {repository: web-rc}
 
   - name: create-final-release
+    serial_groups: [web-release]
     plan:
       - get: concourse-tasks
       - get: web-final
@@ -106,6 +107,7 @@ jobs:
           tag_prefix: 'v'
 
   - name: deploy-to-production
+    serial_groups: [web-release]
     plan:
       - get: web-final
         passed: [create-final-release]
