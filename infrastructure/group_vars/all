@@ -11,7 +11,7 @@ nginx_config_dir: /data/nginx
 applications:
 - name: phogo-web
   command: 'bundle exec rackup --host 0.0.0.0'
-  docker_image: 'phogo/web:rc-41595c2'
+  docker_image: 'phogo/web:latest'
   env:
     COOKIE_SECRET: "{{ lookup('env', 'COOKIE_SECRET') }}"
     GOOGLE_TRACKING_ID: UA-89116778-1
