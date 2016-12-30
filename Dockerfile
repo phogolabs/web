@@ -8,4 +8,8 @@ COPY . /var/app/
 
 WORKDIR /var/app
 
+RUN bundle install
+RUN rm -fr infrastructure
+RUN rm -fr Dockerfile
+
 EXPOSE 9292
