@@ -28,3 +28,8 @@
   when: item.https is defined
 
 - include: http_ssl.yml
+
+- name: reload nginx
+  shell: >
+    docker exec nginx.{{ nginx_net }} nginx -t &&
+    docker kill -s HUP nginx.{{ nginx_net }}
