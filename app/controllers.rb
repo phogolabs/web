@@ -24,6 +24,13 @@ module Phogo
         register Sinatra::Reloader
         # don't enable logging when running tests
         disable :logging
+
+        if ENV['BASIC_AUTH_USER'] && ENV['BASIC_AUTH_PASS']
+          use Rack::Auth::Basic, "Protected Area" do |username, password|
+            username == ENV['BASIC_AUTH_USER'] && password == ENV['BASIC_AUTH_PASS']
+          end
+        end
+
       end
 
       # configuration in production
