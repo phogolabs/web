@@ -1,2 +1,2 @@
 [phogolabs]
-web.phogolabs.com ansible_ssh_host=10.2.1.5
+web.phogolabs.com ansible_ssh_host=163.172.167.174
