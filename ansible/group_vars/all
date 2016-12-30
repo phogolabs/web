@@ -4,6 +4,7 @@ https_common_name: "CloudFlare Origin Certificate"
 untrusted_ca: true
 
 nginx_net: web
+nginx_config_dir: /data/nginx
 
 applications:
 - name: phogo-web
