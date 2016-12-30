@@ -12,6 +12,7 @@
   with_items: "{{ applications }}"
 
 - name: configure nginx HTTP proxy for web applications
+  notify: reload nginx
   template:
     src: nginx.web.j2
     dest: "{{ nginx_config_dir }}/sites/{{ item.network.fqdn }}.site"
@@ -19,6 +20,7 @@
   when: item.https is not defined
 
 - name: configure nginx HTTPS proxy for web applications
+  notify: reload nginx
   template:
     src: nginx.web.ssl.j2
     dest: "{{ nginx_config_dir }}/sites/{{ item.network.fqdn }}.site"
@@ -26,8 +28,3 @@
   when: item.https is defined
 
 - include: http_ssl.yml
-
-- name: reload nginx
-  shell: >
-    docker exec nginx.{{ nginx_net }} nginx -t &&
-    docker kill -s HUP nginx.{{ nginx_net }}
