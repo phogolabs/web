@@ -14,6 +14,15 @@ resources:
     source:
       uri: git@github.com:phogolabs/web.git
       branch: master
+      ignore_paths: ["infrastructure/*"]
+      private_key: {{git-private-key}}
+
+  - name: web-ansible-playbook
+    type: git
+    source:
+      uri: git@github.com:phogolabs/web.git
+      branch: master
+      paths: ["infrastructure/*"]
       private_key: {{git-private-key}}
 
   - name: web-final
@@ -111,6 +120,7 @@ jobs:
   - name: deploy-to-production
     serial_groups: [web-release]
     plan:
+      - get: web-ansible-playbook
       - get: web-final
         passed: [create-final-release]
         trigger: true
@@ -118,7 +128,7 @@ jobs:
         passed: [create-final-release]
       - task: run-ansible-playbook
         file: concourse-tasks/ansible/ansible.yml
-        input_mapping: {ansible-playbooks: web-final}
+        input_mapping: {ansible-playbooks: web-ansible-playbook}
         params:
           ANSIBLE_PLAYBOOK: main.yml
           ANSIBLE_PLAYBOOK_DIR: infrastructure
