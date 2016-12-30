@@ -18,6 +18,10 @@ module Phogo
       "<a href=\"#{path}\" #{options}>#{name}</a>"
     end
 
+    def simple_format(text)
+      text.gsub(/(?:\n\r?|\r\n?)/, '<br>')
+    end
+
     def mail_to(email_address)
       email_address_encoded = 'mailto:'.unpack('C*').map { |c|
         sprintf("&#%d;", c)

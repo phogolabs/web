@@ -258,7 +258,7 @@
                 <td>
                   <h3>Hi, Phogo Labs</h3>
                   <p class="lead">You have been contacted.</p>
-                  <p><%= @contact.message %></p>
+                  <p><%= simple_format(@contact.message) %></p>
                   <p class="callout"><%= @contact.subject %></p>
                   <table class="social" width="100%">
                     <tr>
