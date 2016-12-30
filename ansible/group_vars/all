@@ -3,6 +3,8 @@ https_checks: ["'CN={{ https_common_name }}' in http_response.stderr"]
 https_common_name: "CloudFlare Origin Certificate"
 untrusted_ca: true
 
+nginx_net: web
+
 applications:
 - name: phogo-web
   command: 'bundle exec rackup --host 0.0.0.0'
