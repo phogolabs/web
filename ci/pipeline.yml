@@ -83,7 +83,7 @@ jobs:
         passed: [unit]
         trigger: true
       - put: heroku
-        params: {repository: web-rc}
+        params: {repository: web-rc, force: true}
 
   - name: create-final-release
     serial_groups: [web-release]
