@@ -1,5 +1,5 @@
-- name: www.phogolabs.com
-  hosts: www.phogolabs.com
+- name: web.phogolabs.com
+  hosts: web.phogolabs.com
   gather_facts: true
 
   roles:
