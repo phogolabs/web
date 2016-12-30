@@ -2,7 +2,7 @@ fqdn: 'www.phogolabs.com'
 
 https: true
 https_checks: ["'CN={{ https_common_name }}' in http_response.stderr"]
-https_common_name: "CloudFlare Origin Certificate"
+https_common_name: "sni24795.cloudflaressl.com"
 untrusted_ca: true
 
 nginx_net: web
