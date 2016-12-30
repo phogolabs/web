@@ -3,19 +3,20 @@ groups:
   - name: web
     jobs:
       - unit
-      - deploy-to-heroku
+      - deploy-to-acceptance
       - build-docker-image-rc
       - create-final-release
+      - deploy-to-production
 
 resources:
-  - name: web
+  - name: web-rc
     type: git
     source:
       uri: git@github.com:phogolabs/web.git
       branch: master
       private_key: {{git-private-key}}
 
-  - name: web-rc
+  - name: web-final
     type: git
     source:
       uri: git@github.com:phogolabs/web.git
@@ -54,47 +55,47 @@ resources:
 jobs:
   - name: unit
     plan:
-      - get: web
+      - get: web-rc
         trigger: true
       - task: unit
-        file: web/ci/task/unit.yml
+        file: web-rc/ci/task/unit.yml
 
   - name: build-docker-image-rc
     plan:
       - get: concourse-tasks
-      - get: web
-        passed: [unit]
-        trigger: true
-      - task: version
-        file: concourse-tasks/git/version.yml
-        input_mapping: {repository: web}
-      - put: docker-image
-        params:
-         build: web
-         tag_prefix: 'rc-'
-         tag: version/hash
-        get_params: {skip_download: true, save: true}
-
-  - name: deploy-to-heroku
-    plan:
-      - get: web
-        passed: [unit]
-        trigger: true
-      - put: heroku
-        params: {repository: web}
-
-  - name: create-final-release
-    plan:
-      - get: concourse-tasks
       - get: web-rc
+        passed: [unit]
         trigger: true
       - task: version
         file: concourse-tasks/git/version.yml
         input_mapping: {repository: web-rc}
-        params: {PRODUCT_NAME: phogo-web}
       - put: docker-image
         params:
          build: web-rc
+         tag_prefix: 'rc-'
+         tag: version/hash
+        get_params: {skip_download: true, save: true}
+
+  - name: deploy-to-acceptance
+    plan:
+      - get: web-rc
+        passed: [unit]
+        trigger: true
+      - put: heroku
+        params: {repository: web-rc}
+
+  - name: create-final-release
+    plan:
+      - get: concourse-tasks
+      - get: web-final
+        trigger: true
+      - task: version
+        file: concourse-tasks/git/version.yml
+        input_mapping: {repository: web-final}
+        params: {PRODUCT_NAME: phogo-web}
+      - put: docker-image
+        params:
+         build: web-final
          tag_prefix: 'v'
          tag: version/number
          tag_as_latest: true
@@ -103,3 +104,22 @@ jobs:
           name: version/name
           tag: version/number
           tag_prefix: 'v'
+
+  - name: deploy-to-production
+    plan:
+      - get: web-final
+        passed: [create-final-release]
+        trigger: true
+      - get: concourse-tasks
+        passed: [create-final-release]
+      - task: run-ansible-playbook
+        file: concourse-tasks/ansible/ansible.yml
+        input_mapping: {ansible-playbooks: web-final}
+        params:
+          ANSIBLE_PLAYBOOK: main.yml
+          ANSIBLE_PLAYBOOK_DIR: infrastructure
+          SSH_PRIVATE_KEY: {{git-private-key}}
+          COOKIE_SECRET: {{phogo-web-cookie-secret}}
+          SENDGRID_API_KEY: {{phogo-web-sendgrid-api-key}}
+          HTTPS_CERT: {{phogo-web-https-cert}}
+          HTTPS_KEY: {{phogo-web-https-key}}
