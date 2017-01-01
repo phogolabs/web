@@ -79,9 +79,15 @@ jobs:
       - task: version
         file: concourse-tasks/git/version.yml
         input_mapping: {repository: web-rc}
+      - task: minify
+        file: concourse-tasks/minify/minify.yml
+        input_mapping: {web-application: web-rc}
+        params:
+         DIRECTORY_CSS: public/static/css
+         DIRECTORY_JS: public/static/js
       - put: docker-image
         params:
-         build: web-rc
+         build: web-application-min
          tag_prefix: 'rc-'
          tag: version/hash
         get_params: {skip_download: true}
@@ -104,10 +110,16 @@ jobs:
         file: concourse-tasks/git/version.yml
         input_mapping: {repository: web-final}
         params: {PRODUCT_NAME: phogo-web}
+      - task: minify
+        file: concourse-tasks/minify/minify.yml
+        input_mapping: {web-application: web-final}
+        params:
+         DIRECTORY_CSS: public/static/css
+         DIRECTORY_JS: public/static/js
       - put: docker-image
         get_params: {skip_download: true}
         params:
-         build: web-final
+         build: web-application-min
          tag_prefix: 'v'
          tag: version/number
          tag_as_latest: true
