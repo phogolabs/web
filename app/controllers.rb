@@ -36,7 +36,7 @@ module Phogo
       # configuration in production
       configure :production do
         # enable static files caching
-        set :static_cache_control, [:public, max_age: 60]
+        set :static_cache_control, [:public, max_age: 14400]
         # show exceptions after handlers
         set :show_exceptions, :after_handler
         # Prevent CSRF attacks by raising an exception.
