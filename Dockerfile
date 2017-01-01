@@ -9,6 +9,8 @@ COPY . /var/app/
 WORKDIR /var/app
 
 RUN bundle install
+RUN rake minify:all
+
 RUN rm -fr infrastructure
 RUN rm -fr Dockerfile
 
