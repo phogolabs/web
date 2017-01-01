@@ -2,7 +2,7 @@ jQuery(function($) {
   $('#contact-form')
     .validator()
     .on('invalid.bs.validator', function (e) {
-      var $error = $('#contact-error');
+      $error = $('#contact-error');
       errorMessageId = 'err-msg-' + e.relatedTarget.name
       $error.removeClass('hidden');
       $error.append('<p id="' + errorMessageId + '">' + e.detail + '</p>');
@@ -16,10 +16,10 @@ jQuery(function($) {
         return
       }
 
-      var $form = $(this);
-      var $target = $('#contact-header');
-      var $container = $('#contact-body');
-      var $error = $('#contact-error');
+      $form = $(this);
+      $target = $('#contact-header');
+      $container = $('#contact-body');
+      $error = $('#contact-error');
 
       $.ajax({
         type: $form.attr('method'),
