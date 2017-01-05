@@ -20,7 +20,7 @@ applications:
     RACK_ENV: production
     SENDGRID_API_KEY: "{{ lookup('env', 'SENDGRID_API_KEY') }}"
   network:
-    fqdn: 'www.phogolabs.com'
+    fqdn: 'phogolabs.com'
     port: 9292
   https:
     cert: "{{ lookup('env', 'HTTPS_CERT') }}"
