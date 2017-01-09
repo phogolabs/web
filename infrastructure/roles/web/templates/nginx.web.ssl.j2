@@ -3,6 +3,7 @@
 server {
   listen 80;
   server_name {{ item.network.fqdn }};
+  server_name www.{{ item.network.fqdn }};
   return 301 https://{{ fqdn }}$request_uri;
 }
 
